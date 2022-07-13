@@ -9,7 +9,7 @@ library(dplyr)
 library(corrplot)
 ################Data Preparation
 #---------
-source("C:\\Users\\vasileios palaskas\\Desktop\\Github folder\\Bayesian_Variable_Selection_Volleyball\\Section_2_1_Data_Processing\\Data_Preparation.R")#-Data_Preparation.R
+source("C:\\Users\\vasileios palaskas\\Documents\\GitHub\\Bayesian_Skill_Importance_for_Volleyball_Set_Determination\\Section_2_1_Data_Processing\\Data_Preparation.R")#-Data_Preparation.R
 
 # Dataframes with Skill actions of both Home and Away Teams
 X_home<-data_by_sets[c(
@@ -44,7 +44,6 @@ X_away_std<-data.frame(scale(X_away,center=T,scale=T) )
 #--------
 
 
-setwd("C:/Users/vasileios palaskas/Desktop/Github folder/Bayesian_Variable_Selection_Volleyball/ZDTS_Skills_Revised")
 # Create the datalist for running pilot run of full ordered multinomial model with only skill actions (remove both poor and failed pass from our analysis)
 data_zdts_only_skills<-list(c_thres=2,c_std=5,
                             n_games=dim(data_by_sets)[1],
@@ -54,7 +53,7 @@ data_zdts_only_skills<-list(c_thres=2,c_std=5,
                        away_sets=data_by_sets$away_sets)
 
 
-setwd("C:/Users/vasileios palaskas/Desktop/Github folder/Bayesian_Variable_Selection_Volleyball/Section_5_2_BVS_ZDTS/With_only_skill_actions")
+setwd("C:/Users/vasileios palaskas/DocumentsGitHub/Bayesian_Skill_Importance_for_Volleyball_Set_Determination/Section_5_2_BVS_ZDTS/With_only_skill_actions")
 full_zdts_only_skills_revised<-stan("full_zdts_only_skills.stan",
                              data=data_zdts_only_skills,chains=2,init_r=0.5,
                              iter=10000,warmup=2000,cores=2)### ## Run full_zdts_only_skills.stan

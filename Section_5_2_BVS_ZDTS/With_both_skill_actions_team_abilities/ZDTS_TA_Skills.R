@@ -7,7 +7,7 @@ library(car)
 # Choose the working directory of this file (...\\Submitted_Appendix\\Ordered\\)
 
 #---Data Preparation
-source(file.choose())#-Extra_Data_Processes/Data_Preparation.R (when run, run Extra_Data_Processes/Data/Final_Regular_Season.csv)
+source("C:\\Users\\vasileios palaskas\\Documents\\GitHub\\Bayesian_Skill_Importance_for_Volleyball_Set_Determination\\Section_2_1_Data_Processing\\Data_Preparation.R")#-Data_Preparation.R
 
 # Choose the working directory of this file (...\\Submitted_Appendix\\ZDTS\\)
 # setwd("C:/Users/vasileios palaskas/Desktop/Github folder/Bayesian_Variable_Selection_Volleyball/ZDTS_TA_Skills")

@@ -7,7 +7,7 @@ options(mc.cores = parallel::detectCores())# Activate multiple cores for stan mo
 
 ################Data Preparation
 #---------
-source("C:\\Users\\vasileios palaskas\\Desktop\\Github folder\\Bayesian_Variable_Selection_Volleyball\\Section_2_1_Data_Processing\\Data_Preparation.R")#-Data_Preparation.R
+source("C:\\Users\\vasileios palaskas\\Documents\\GitHub\\Bayesian_Skill_Importance_for_Volleyball_Set_Determination\\Section_2_1_Data_Processing\\Data_Preparation.R")#-Data_Preparation.R
 
 # Dataframes with Skill actions of both Home and Away Teams
 X_home<-data_by_sets[c(

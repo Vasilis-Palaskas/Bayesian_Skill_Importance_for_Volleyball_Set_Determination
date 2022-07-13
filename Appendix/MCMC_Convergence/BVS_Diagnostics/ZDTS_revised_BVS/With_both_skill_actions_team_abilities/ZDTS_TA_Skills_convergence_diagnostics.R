@@ -76,6 +76,28 @@ gg_posterior_values_betas_away<- ggs(mcmc_final_posterior_values_betas_away)
 gg_posterior_values_gammas_home <- ggs(mcmc_final_posterior_values_gammas_home)
 gg_posterior_values_gammas_away <- ggs(mcmc_final_posterior_values_gammas_away)
 
+# Rename parameters for better visualisation in pdf files
+par_names=colnames(mcmc_final_posterior_values_gammas_home_away)
+par_labels=c("(Home) perfect serves","(Home) very good serves","(Home) failed serves",
+             "(Home) poor passes","(Home) failed passes","(Home) perfect att1",
+             "(Home) blocked att1","(Home) failed att1","(Home) perfect att2",
+             "(Home) blocked att2","(Home) failed att2","(Home) perfect blocks",
+             "(Home) block net violations","(Home) failed blocks","(Home) failed settings",
+             "(Away) perfect serves","(Away) very good serves","(Away) failed serves",
+             "(Away) poor passes","(Away) failed passes","(Away) perfect att1",
+             "(Away) blocked att1","(Away) failed att1","(Away) perfect att2",
+             "(Away) blocked att2","(Away) failed att2","(Away) perfect blocks",
+             "(Away) block net violations","(Away) failed blocks","(Away) failed settings")
+
+
+P <- data.frame(
+        Parameter=par_names,
+        Label=par_labels)
+
+gg_posterior_values_gammas_home_away<-ggs(mcmc_final_posterior_values_gammas_home_away, par_labels=P)
+gg_posterior_values_gammas_home_away<-gg_posterior_values_gammas_home_away[!gg_posterior_values_gammas_home_away$Parameter%in%c(
+        "(Home) poor passes","(Home) blocked att1","(Away) blocked att1"),]
+
 #----Step2: Save in a single pdf all the necessary plots for the assessment of the convergence
 ggmcmc(gg_posterior_values_betas_home, 
        file = "converg_betas_home_zdts_ta_skills_revised.pdf", plot=c( "running","traceplot",
@@ -95,4 +117,4 @@ ggmcmc(gg_posterior_values_gammas_away,
                                                                         "geweke","Rhat","autocorrelation"))
 
 ggmcmc(gg_posterior_values_gammas_home_away, 
-       file = "converg_gammas_home_away_zdts_ta_skills_revised.pdf", plot=c( "running"))
+       file = "converg_gammas_home_away_zdts_ta_skills_revised.pdf", plot=c( "running"),param_page=9)
