@@ -7,14 +7,16 @@ load(file="revised_ZDTS_only_Skills_after_BVS")
 
 #----------
 #Step 1: Convert the mcmc object to a ggmcmc object for visualisation purposes
-ZDTS_only_Skills_after_BVS_parameters<-ggs(mcmc(cbind(mu,home,
-                                                      beta_home_away)))
+mcmc_mu_home_beta_home_away<-mcmc(cbind(mu,home,
+           beta_home_away))
 
 # mu parameter for >1 chains visualisation
 gg_ZDTS_only_Skills_after_BVS_mu<- ggs(ZDTS_only_Skills_after_BVS,
                                                       family = "mu")
 # Rename parameters for better visualisation in pdf files
-par_names=colnames(mcmc_final_posterior_values_gammas_home_away)
+par_names=c(names(X_home),names(X_away))
+par_names<-par_names[!par_names%in%c("Home_perfect_passes","Home_very_good_passes",
+                                     "Away_perfect_passes","Away_very_good_passes")]
 par_labels=c("(Home) perfect serves","(Home) very good serves","(Home) failed serves",
              "(Home) poor passes","(Home) failed passes","(Home) perfect att1",
              "(Home) blocked att1","(Home) failed att1","(Home) perfect att2",
@@ -30,12 +32,20 @@ par_labels=c("(Home) perfect serves","(Home) very good serves","(Home) failed se
 P <- data.frame(
         Parameter=par_names,
         Label=par_labels)
+
+ZDTS_only_Skills_after_BVS_parameters<-ggs(mcmc_mu_home_beta_home_away, par_labels=P)
+# Keep the finally selected from the BVS algorithm
+
+ZDTS_only_Skills_after_BVS_parameters<-ZDTS_only_Skills_after_BVS_parameters[ZDTS_only_Skills_after_BVS_parameters$Parameter%in%
+                                                                                     c("mu","home",
+                                                                                       colnames(beta_home),colnames(beta_away)),
+                                                                                     ]
 # Step2: Save in a single pdf all the necessary plots for the assessment of the convergence 
 # (can also produce auto correlation plots, Rhat plots, etc...)
 
 ggmcmc(ZDTS_only_Skills_after_BVS_parameters, 
        file = "converg_gg_revised_ZDTS_only_Skills_after_BVS_parameters.pdf", 
-       plot=c( "running"))
+       plot=c( "running"),param_page=8)
 
 
 # across multiple chains
