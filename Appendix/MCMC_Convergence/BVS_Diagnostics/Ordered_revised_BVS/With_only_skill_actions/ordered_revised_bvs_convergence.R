@@ -47,48 +47,73 @@ gg_posterior_values_betas<- ggs(mcmc_final_posterior_values_betas)
 
 gg_posterior_values_gammas<- ggs(mcmc_final_posterior_values_gammas)
 
+# Separate the post. inclus. prob. of skill actions to two categories: a) the selected from the BVS algorithm skill actions (selected) and b) the not seletec ones (not_selected)
+gg_posterior_values_gammas_selected<-gg_posterior_values_gammas[
+  gg_posterior_values_gammas$Parameter%in%c("perfect_serves","failed_serves",
+                                            "perfect_att1","failed_att1",
+                                            "perfect_att2","failed_att2",
+                                            "perfect_blocks","failed_settings")
+                                                     ,]
+
+gg_posterior_values_gammas_not_selected<-gg_posterior_values_gammas[
+  gg_posterior_values_gammas$Parameter%in%c("very_good_serves","perfect_passes",
+                                                      "very_good_passes","blocked_att1","blocked_att2",
+                                                      "net_violation_blocks","failed_blocks"),]
+
 #----Step2: Save in a single pdf all the necessary plots for the assessment of the convergence
-ggmcmc(gg_posterior_values_betas, 
-       file = "converg_betas_revised_ordered_bvs_skills.pdf", plot=c( "running",
-                                                              "geweke","Rhat","autocorrelation"))
 
-ggmcmc(gg_posterior_values_gammas, 
-       file = "converg_gammas_revised_ordered_bvs_skills.pdf", plot=c( "running"))
+# This pdf plot will be included in the Appendix
+selected_ggs<-ggs_running(gg_posterior_values_gammas_selected)+
+  facet_wrap(~ Parameter, scales = "free" )+  ggtitle("Selected by BVS Algorithm \n(Ordered multinomial-Formulation b)")+
+  scale_y_continuous(limits=c(0.4,1), breaks = c(seq(0.4,1, by = 0.1 )))+
+  scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 3000 )))
 
+not_selected_ggs<- ggs_running(gg_posterior_values_gammas_not_selected)+
+  facet_wrap(~ Parameter, scales = "free" )+ ggtitle("Not Selected by BVS Algorithm \n(Ordered multinomial-Formulation b)")+
+  scale_y_continuous(limits=c(0,0.6), breaks = c(seq(0,0.6, by = 0.1 )))+
+  scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 3000 )))  
+
+pdf(file="Post_Incl_Probs_Ordered_Skills.pdf",width =14.5, height =8.5)
+grid.arrange(selected_ggs,not_selected_ggs,ncol=2)
+dev.off()  
+
+pdf(file="Post_Incl_Probs_without_selected_Ordered_Skills.pdf", width =14.5, height =8.5)
+grid.arrange(not_selected_ggs)
+dev.off()  
 #----------
-
-
-################################################################################
-###  Table with several convergence diagnostics (neff, Rhat, Raftery-Lewis) 
-################################################################################
-
-########### Merged Chains Analysis
-#------------
-
-
-## Merged Chains summary statistics of model parameters
-# ordered_params_summary<-summary(ordered_skills_after_BVS_model,pars=c(
-#   "temp_Intercept","beta"))
-# Convertion to mcmc objects
-
-ordered_params<-mcmc_final_posterior_values_gammas
-
-# Raftery Diagnostics
-raftery.diag(ordered_params, q=0.025, r=0.005, s=0.95, converge.eps=0.001)
-geweke.diag(ordered_params, frac1=0.1, frac2=0.5)
-#heidel.diag Heidelberger and Welch’s convergence diagnostic
-heidel.diag(ordered_params, eps=0.1, pvalue=0.05)[,c(1,3)]
-
-#Table with these measures
-converg.diag_matrix_ordered_params<-cbind(round(ordered_params_summary$summary[,c(9)]),
-                                          round(ordered_params_summary$summary[,c(10)],2),
-                                          round(raftery.diag(ordered_params, q=0.025, r=0.005, s=0.95, converge.eps=0.001)$resmatrix,3),
-                                          heidel.diag(ordered_params, eps=0.1, pvalue=0.05)[,c(1,3)])
-colnames(converg.diag_matrix_ordered_params)[c(1,2,7,8)]<-c("n_eff","Rhat","stationarity_test","p-value")
-
-converg.diag_matrix_ordered_params_final<-converg.diag_matrix_ordered_params[,-c(3:5)]
-# LateX table
-xtable(converg.diag_matrix_ordered_params_final,digits=2,"MCMC Convergence diagnostics of N_eff, Rhat, Raftery and Lewis and
- and Heidelberger and Welch for the ordered-multinomial
-       model with formulation a (Merged Chains)")
-#------------
+# 
+# 
+# ################################################################################
+# ###  Table with several convergence diagnostics (neff, Rhat, Raftery-Lewis) 
+# ################################################################################
+# 
+# ########### Merged Chains Analysis
+# #------------
+# 
+# 
+# ## Merged Chains summary statistics of model parameters
+# # ordered_params_summary<-summary(ordered_skills_after_BVS_model,pars=c(
+# #   "temp_Intercept","beta"))
+# # Convertion to mcmc objects
+# 
+# ordered_params<-mcmc_final_posterior_values_gammas
+# 
+# # Raftery Diagnostics
+# raftery.diag(ordered_params, q=0.025, r=0.005, s=0.95, converge.eps=0.001)
+# geweke.diag(ordered_params, frac1=0.1, frac2=0.5)
+# #heidel.diag Heidelberger and Welch’s convergence diagnostic
+# heidel.diag(ordered_params, eps=0.1, pvalue=0.05)[,c(1,3)]
+# 
+# #Table with these measures
+# converg.diag_matrix_ordered_params<-cbind(round(ordered_params_summary$summary[,c(9)]),
+#                                           round(ordered_params_summary$summary[,c(10)],2),
+#                                           round(raftery.diag(ordered_params, q=0.025, r=0.005, s=0.95, converge.eps=0.001)$resmatrix,3),
+#                                           heidel.diag(ordered_params, eps=0.1, pvalue=0.05)[,c(1,3)])
+# colnames(converg.diag_matrix_ordered_params)[c(1,2,7,8)]<-c("n_eff","Rhat","stationarity_test","p-value")
+# 
+# converg.diag_matrix_ordered_params_final<-converg.diag_matrix_ordered_params[,-c(3:5)]
+# # LateX table
+# xtable(converg.diag_matrix_ordered_params_final,digits=2,"MCMC Convergence diagnostics of N_eff, Rhat, Raftery and Lewis and
+#  and Heidelberger and Welch for the ordered-multinomial
+#        model with formulation a (Merged Chains)")
+# #------------

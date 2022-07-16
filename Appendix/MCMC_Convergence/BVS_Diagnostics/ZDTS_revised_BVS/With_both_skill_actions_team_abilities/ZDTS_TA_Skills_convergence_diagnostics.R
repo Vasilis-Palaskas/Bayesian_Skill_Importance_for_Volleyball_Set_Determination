@@ -98,6 +98,23 @@ gg_posterior_values_gammas_home_away<-ggs(mcmc_final_posterior_values_gammas_hom
 gg_posterior_values_gammas_home_away<-gg_posterior_values_gammas_home_away[!gg_posterior_values_gammas_home_away$Parameter%in%c(
         "(Home) poor passes","(Home) blocked att1","(Away) blocked att1"),]
 
+# Separate the post. inclus. prob. of skill actions to two categories: a) the selected from the BVS algorithm skill actions (selected) and b) the not seletec ones (not_selected)
+gg_posterior_values_gammas_home_away_selected<-gg_posterior_values_gammas_home_away[
+        gg_posterior_values_gammas_home_away$Parameter%in%c("(Home) failed serves","(Home) failed passes",
+                                                            "(Home) failed att1","(Away) failed serves","(Away) failed passes",
+                                                            "(Away) failed att1","(Away) failed att2","(Away) block net violations",
+                                                            "(Away) failed blocks"),]
+
+gg_posterior_values_gammas_home_away_not_selected<-gg_posterior_values_gammas_home_away[
+        gg_posterior_values_gammas_home_away$Parameter%in%c("(Home) perfect serves","(Home) very good serves",
+                                                            "(Home) perfect att1","(Home) perfect att2","(Home) blocked att2",
+                                                            "(Home) failed att2","(Home) perfect blocks","(Home) block net violations",
+                                                            "(Home) failed blocks","(Home) failed settings",
+                                                            "(Away) perfect serves","(Away) very good serves",
+                                                            "(Away) poor passes","(Away) perfect att1",
+                                                            "(Away) blocked att2","(Away) perfect blocks",
+                                                            "(Away) failed settings"),]
+
 #----Step2: Save in a single pdf all the necessary plots for the assessment of the convergence
 ggmcmc(gg_posterior_values_betas_home, 
        file = "converg_betas_home_zdts_ta_skills_revised.pdf", plot=c( "running","traceplot",
@@ -112,9 +129,17 @@ ggmcmc(gg_posterior_values_gammas_home,
        file = "converg_gammas_home_zdts_ta_skills_revised.pdf", plot=c( "running",
                                                                         "geweke","Rhat","autocorrelation"))
 
-ggmcmc(gg_posterior_values_gammas_away, 
-       file = "converg_gammas_away_zdts_ta_skills_revised.pdf", plot=c( "running",
-                                                                        "geweke","Rhat","autocorrelation"))
+# This pdf plot will be included in the Appendix
+selected_ggs<-ggs_running(gg_posterior_values_gammas_home_away_selected)+
+        facet_wrap(~ Parameter, scales = "free" )+  ggtitle("Selected by BVS Algorithm \n(ZDTS-Formulation a)")+
+        scale_y_continuous(limits=c(0.4,1), breaks = c(seq(0.4,1, by = 0.1 )))+
+        scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 10000  )))
 
-ggmcmc(gg_posterior_values_gammas_home_away, 
-       file = "converg_gammas_home_away_zdts_ta_skills_revised.pdf", plot=c( "running"),param_page=9)
+not_selected_ggs<- ggs_running(gg_posterior_values_gammas_home_away_not_selected)+
+        facet_wrap(~ Parameter, scales = "free" )+ ggtitle("Not Selected by BVS Algorithm \n(ZDTS-Formulation a)")+
+        scale_y_continuous(limits=c(0,0.6), breaks = c(seq(0,0.6, by = 0.1 )))+
+        scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 10000 )))  
+
+pdf(file="Post_Incl_Probs_ZDTS_TA_Skills.pdf", width =19, height =11)
+grid.arrange(selected_ggs,not_selected_ggs,ncol=2)
+dev.off()  

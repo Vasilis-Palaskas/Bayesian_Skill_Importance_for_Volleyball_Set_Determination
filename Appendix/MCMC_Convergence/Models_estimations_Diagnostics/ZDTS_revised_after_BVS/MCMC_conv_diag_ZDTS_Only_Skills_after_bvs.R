@@ -48,6 +48,11 @@ ggmcmc(ZDTS_only_Skills_after_BVS_parameters,
        plot=c( "running"),param_page=8)
 
 
+
+pdf(file="converg_gg_revised_ZDTS_only_Skills_after_BVS_parameters.pdf", width =14.5, height =8.5)
+ggs_running(ZDTS_only_Skills_after_BVS_parameters)+
+        facet_wrap(~ Parameter, scales = "free" )+  ggtitle("Parameters of the ZDTS (Formulation b)")
+dev.off()  
 # across multiple chains
 
 ggmcmc(gg_ZDTS_only_Skills_after_BVS_mu,
