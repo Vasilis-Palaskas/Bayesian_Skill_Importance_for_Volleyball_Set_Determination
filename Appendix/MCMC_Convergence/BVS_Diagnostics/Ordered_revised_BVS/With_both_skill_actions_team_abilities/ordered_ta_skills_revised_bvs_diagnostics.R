@@ -61,7 +61,7 @@ selected_ggs<-ggs_running(gg_posterior_values_gammas_selected)+
   scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 3000 )))
 
 not_selected_ggs<- ggs_running(gg_posterior_values_gammas_not_selected)+
-  facet_wrap(~ Parameter, scales = "free" )+ ggtitle("Not Selected by BVS Algorithm \n(Ordered multinomial-Formulation a)")+
+  facet_wrap(~ Parameter, scales = "free", ncol = 4,nrow=2 )+ ggtitle("Not Selected by BVS Algorithm \n(Ordered multinomial-Formulation a)")+
   scale_y_continuous(limits=c(0,0.6), breaks = c(seq(0,0.6, by = 0.1 )))+
   scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 3000 )))  
 
@@ -69,6 +69,6 @@ pdf(file="Post_Incl_Probs_Ordered_TA_Skills.pdf", width =14.5, height =8.5)
 grid.arrange(selected_ggs,not_selected_ggs,ncol=2)
 dev.off()  
 
-pdf(file="Post_Incl_Probs_without_selected_Ordered_TA_Skills.pdf",width =14.5, height =8.5)
+pdf(file="Post_Incl_Probs_without_selected_Ordered_TA_Skills.pdf",width =10.5, height =5.5)
 grid.arrange(not_selected_ggs)
 dev.off()  

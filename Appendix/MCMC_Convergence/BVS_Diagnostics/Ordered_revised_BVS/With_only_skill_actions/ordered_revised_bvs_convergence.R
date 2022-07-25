@@ -1,5 +1,5 @@
 
-
+library(gridExtra)
 #  Load the posterior densities (objects) of both gammas and betas for further manipulation in terms of convergence diagnostics, posterior summary statistics, etc...
 load("BVS_Ordered_Skills_gammas_collinearity")# saved in folder of my desktop
 load("BVS_Ordered_Skills_betas_collinearity")# saved in folder of my desktop
@@ -54,6 +54,10 @@ gg_posterior_values_gammas_selected<-gg_posterior_values_gammas[
                                             "perfect_att2","failed_att2",
                                             "perfect_blocks","failed_settings")
                                                      ,]
+# For better visualisation we keep only the selected skill actions with post. incl.probability not being equal to 1
+gg_posterior_values_gammas_selected<-gg_posterior_values_gammas[
+  gg_posterior_values_gammas$Parameter%in%c("failed_settings")
+  ,]
 
 gg_posterior_values_gammas_not_selected<-gg_posterior_values_gammas[
   gg_posterior_values_gammas$Parameter%in%c("very_good_serves","perfect_passes",
@@ -69,15 +73,17 @@ selected_ggs<-ggs_running(gg_posterior_values_gammas_selected)+
   scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 3000 )))
 
 not_selected_ggs<- ggs_running(gg_posterior_values_gammas_not_selected)+
-  facet_wrap(~ Parameter, scales = "free" )+ ggtitle("Not Selected by BVS Algorithm \n(Ordered multinomial-Formulation b)")+
+  facet_wrap(~ Parameter, scales = "free",  ncol = 4,nrow=2)+ ggtitle("Not Selected by BVS Algorithm \n(Ordered multinomial-Formulation b)")+
   scale_y_continuous(limits=c(0,0.6), breaks = c(seq(0,0.6, by = 0.1 )))+
   scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 3000 )))  
 
 pdf(file="Post_Incl_Probs_Ordered_Skills.pdf",width =14.5, height =8.5)
 grid.arrange(selected_ggs,not_selected_ggs,ncol=2)
 dev.off()  
-
-pdf(file="Post_Incl_Probs_without_selected_Ordered_Skills.pdf", width =14.5, height =8.5)
+pdf(file="Post_Incl_Probs_Ordered_Skills_singleplot.pdf",width =10.5, height =5.5)
+grid.arrange(selected_ggs)
+dev.off()  
+pdf(file="Post_Incl_Probs_without_selected_Ordered_Skills.pdf", width =10.5, height =5.5)
 grid.arrange(not_selected_ggs)
 dev.off()  
 #----------

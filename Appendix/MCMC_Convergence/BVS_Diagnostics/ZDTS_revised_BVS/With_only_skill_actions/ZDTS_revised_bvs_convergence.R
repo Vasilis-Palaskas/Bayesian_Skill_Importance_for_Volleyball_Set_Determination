@@ -140,16 +140,23 @@ ggmcmc(gg_posterior_values_gammas_away,
 
 # This pdf plot will be included in the Appendix
 selected_ggs<-ggs_running(gg_posterior_values_gammas_home_away_selected)+
-                facet_wrap(~ Parameter, scales = "free" )+  ggtitle("Selected by BVS Algorithm \n(ZDTS-Formulation b)")+
+                facet_wrap(~ Parameter, scales = "free",ncol=3,nrow=3 )+  ggtitle("Selected by BVS Algorithm \n(ZDTS-Formulation b)")+
         scale_y_continuous(limits=c(0.4,1), breaks = c(seq(0.4,1, by = 0.1 )))+
         scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 10000  )))
  
 not_selected_ggs<- ggs_running(gg_posterior_values_gammas_home_away_not_selected)+
-                facet_wrap(~ Parameter, scales = "free" )+ ggtitle("Not Selected by BVS Algorithm \n(ZDTS-Formulation b)")+
+                facet_wrap(~ Parameter, scales = "free",nrow=3,ncol=6 )+ ggtitle("Not Selected by BVS Algorithm \n(ZDTS-Formulation b)")+
                 scale_y_continuous(limits=c(0,0.6), breaks = c(seq(0,0.6, by = 0.1 )))+
         scale_x_continuous(limits=c(0,T-warmup), breaks = c(seq(0,T-warmup, by = 10000 )))  
 
 pdf(file="Post_Incl_Probs_ZDTS_Skills.pdf", width =19, height =11)
 grid.arrange(selected_ggs,not_selected_ggs,ncol=2)
 dev.off()  
-           
+          
+pdf(file="Post_Incl_Probs_ZDTS_Skills_Selected.pdf",width =15, height =8)
+grid.arrange(selected_ggs)
+dev.off()  
+
+pdf(file="Post_Incl_Probs_ZDTS_Skills_not_Selected.pdf", width =15, height =8)
+grid.arrange(not_selected_ggs)
+dev.off()   
