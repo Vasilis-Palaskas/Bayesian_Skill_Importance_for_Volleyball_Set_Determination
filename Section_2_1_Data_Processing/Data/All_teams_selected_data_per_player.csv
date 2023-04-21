@@ -1,11 +1,11 @@
-,Player,In game role of the player,SRV Total,SRV failed,SRV very good,SRV perfect,REC Total,REC Failed,REC poor,REC very good,REC perfect,Attack 1 Total,Attack 1 failed,Attack 1 blocked,Attack 1 perfect,Attack 2 Total,Attack 2 failed,Attack 2 blocked,Attack 2 perfect,Block Total ,Block error,Block violation in the net,Block perfect,Setting Total,Setting error
+﻿,Player,In game role of the player,SRV Total,SRV failed,SRV very good,SRV perfect,REC Total,REC Failed,REC poor,REC very good,REC perfect,Attack 1 Total,Attack 1 failed,Attack 1 blocked,Attack 1 perfect,Attack 2 Total,Attack 2 failed,Attack 2 blocked,Attack 2 perfect,Block Total ,Block error,Block violation in the net,Block perfect,Setting Total,Setting error
 Ethnikos Alexandroupolis,1 MOUCHLIAS D.,O,1,,,,,,,,,2,,1,1,2,1,,1,,,,,1,
 Ethnikos Alexandroupolis,10 MIROS D.,L,,,,,4,2,,1,1,,,,,,,,,,,,,,
 Ethnikos Alexandroupolis,12 STIGGAS,M,302,27,51,7,7,,,2,2,147,14,11,74,55,4,5,31,214,85,6,58,18,1
 Ethnikos Alexandroupolis,13 PALENTZAS,O,302,75,47,29,1,1,,,,335,50,28,168,230,32,21,120,120,45,1,42,20,2
 Ethnikos Alexandroupolis,14 TSELIOS,M,167,33,16,12,9,4,1,,,85,9,5,43,35,3,,20,156,61,3,32,10,4
 Ethnikos Alexandroupolis,15 KONSTANTINIDIS A.,L,,,,,29,3,1,4,8,,,,,,,,,,,,,6,1
-Ethnikos Alexandroupolis,16 STOILOUDIS V.,H,2,,,,,,,,,,,,,,,,,,,,,,
+Ethnikos Alexandroupolis,16 STOILOUDIS. V.,H,2,,,,,,,,,,,,,,,,,,,,,,
 Ethnikos Alexandroupolis,18 KONTOSTATHIS,L,,,,,475,22,25,129,119,,,,,,,,,,,,,58,1
 Ethnikos Alexandroupolis,2 KAVARATZIS,H,10,2,4,,6,3,1,,,5,,,2,2,1,,1,3,2,,1,2,1
 Ethnikos Alexandroupolis,3 VLAHOPOULOS,S,36,1,4,2,2,1,,,,1,,,1,,,,,10,5,,,187,5
@@ -88,7 +88,7 @@ Kyzikos Peramou,Team,,1706,256,216,96,1608,119,87,351,445,1351,122,135,683,704,7
 Olympiacos,10 FRAGOS,H,119,37,15,18,216,8,14,43,78,106,8,6,61,70,3,9,34,45,23,,13,11,
 Olympiacos,11 ROUMELIOTAKIS G.,H,31,2,5,2,30,3,2,7,4,20,4,3,10,12,,3,3,2,2,,,1,
 Olympiacos,14 ATHOS F.,M,353,19,59,9,12,2,,5,1,152,9,7,105,48,2,1,31,194,81,1,38,17,1
-Olympiacos,17 AGAMEZ L.,O,191,44,27,27,361,44,27,26,190,154,15,17,71,98,31,1,33,79,13,1,18,12,3
+Olympiacos,17 AGAMEZ L.,O,191,44,27,27,,,,,,154,15,17,71,98,31,1,33,79,13,1,18,12,3
 Olympiacos,18 CUPKOVIC K.,H,201,42,27,11,237,22,14,40,52,229,20,12,128,217,14,20,114,94,39,,21,32,3
 Olympiacos,2 DUFF J.,M,122,8,26,9,1,,,1,,62,9,4,30,36,1,3,25,112,49,1,25,4,
 Olympiacos,3 ZOUPANI,O,113,18,12,14,,,,,,111,7,8,67,94,7,13,44,54,22,,12,7,1
@@ -97,7 +97,7 @@ Olympiacos,5 STIVAHTIS K.,S,164,8,29,7,4,1,,,,18,,1,13,8,,1,5,53,28,,3,877,8
 Olympiacos,6 STEFANOU,L,,,,,375,17,15,83,135,,,,,,,,,,,,,59,
 Olympiacos,7 FILIPOV,S,141,4,29,4,6,,1,,,5,,,2,7,,,2,47,18,,10,613,6
 Olympiacos,8 GUZDA K.,L,,,,,60,7,3,18,14,,,,,,,,,,,,,17,1
-Olympiacos,9 ΚΟΚΚΙΝΑΚΗΣ Μ.,H,280,50,40,18,369,15,12,77,146,194,14,16,106,144,8,19,55,86,32,,27,75,2
+Olympiacos,9 KOKKINAKIS M.,H,280,50,40,18,369,15,12,77,146,194,14,16,106,144,8,19,55,86,32,,27,75,2
 Olympiacos,Team,,1872,246,290,125,1315,75,61,274,432,1155,103,69,674,811,50,87,395,907,385,3,198,1733,25
 Orestiada,1 NASH S.,O,85,19,7,7,,,,,,129,18,17,46,68,7,8,20,48,18,1,14,9,
 Orestiada,10 ANTONIADIS A.,L,2,,1,,119,10,8,20,29,,,,,,,,,,,,,19,1
@@ -114,8 +114,8 @@ Orestiada,22 ANASTASIADIS,S,36,8,6,2,,,,,,8,,1,2,8,,,5,16,8,1,5,199,4
 Orestiada,23 CARABALI C.,M,84,27,9,3,3,,1,,1,59,5,4,24,20,1,1,9,70,29,5,18,7,2
 Orestiada,24 GREEN R.,O,103,16,18,7,2,1,1,,,164,26,16,65,71,7,5,19,37,24,,3,12,1
 Orestiada,26 BARONIS,H,2,,,,,,,,,2,1,1,,,,,,,,,,,
-Orestiada,4 ΜΠΟΖΙΔΗΣ Π.,S,5,,,,,,,,,1,,,,,,,,1,,,,22,1
-Orestiada,5 ΡΑΠΤΗΣ Δ.,H,91,14,13,3,,,,,,19,1,1,9,7,1,,3,36,19,1,,357,17
+Orestiada,4 BOZIDIS P.,S,5,,,,,,,,,1,,,,,,,,1,,,,22,1
+Orestiada,5 RAPTIS D.,S,91,14,13,3,,,,,,19,1,1,9,7,1,,3,36,19,1,,357,17
 Orestiada,6 LESCOV M.,S,144,27,28,18,1,1,,,,14,2,,1,10,4,,6,38,10,,14,444,6
 Orestiada,7 MORELOS J.,H,189,20,23,7,333,21,15,70,130,229,21,17,94,150,18,6,62,74,36,,9,24,1
 Orestiada,8 KANTARIDIS,H,13,4,1,2,21,2,2,3,5,7,,1,3,8,,,1,4,3,,1,,
@@ -129,7 +129,7 @@ Pamvochaikos,16 TZELATIS,O,250,70,28,16,2,1,,,,325,30,26,147,205,9,23,97,108,43,
 Pamvochaikos,17 BATAGIM H.,H,257,46,31,7,417,38,28,89,137,277,16,13,132,218,13,11,114,94,48,4,16,32,
 Pamvochaikos,20 PAPADIMITRIOU ,L,,,,,238,12,15,38,96,,,,,,,,,,,,,,
 Pamvochaikos,22 PAPADIMITRIOU,L,,,,,183,8,8,38,74,,,,,,,,,,,,,49,2
-Pamvochaikos,23 SMITH C.,M,111,8,20,3,1,1,,,,1,,,,2,,,1,45,13,1,12,373,12
+Pamvochaikos,23 SMITH C.,S,111,8,20,3,1,1,,,,1,,,,2,,,1,45,13,1,12,373,12
 Pamvochaikos,3 ZIVANOVIC N.,S,163,26,29,19,4,2,,,,9,,1,7,15,3,2,8,65,20,1,17,555,17
 Pamvochaikos,5 NANOPOULOS D.,H,3,,,,2,,1,,,,,,,,,,,,,,,,
 Pamvochaikos,7 GRAHAM B.,M,292,32,44,14,14,2,,4,3,140,14,6,83,34,4,1,20,220,60,14,53,30,7
@@ -184,7 +184,7 @@ Paok,7 STAROVIC S.,O,119,28,19,12,,,,,,111,6,11,57,94,4,9,42,51,18,2,11,14,1
 Paok,8 SAKOGLOU,O,156,50,14,3,1,,,1,,241,17,21,132,177,12,10,81,108,38,1,22,21,
 Paok,9 SOTIRIOU,H,219,44,35,14,349,26,26,80,97,149,13,14,76,139,9,11,59,74,27,2,24,20,1
 Paok,Team,,1918,291,272,87,1435,93,67,291,496,1240,89,105,667,881,58,57,408,1000,367,11,202,1602,37
-Foinikas Syrou,10 ZISIS,L,,,,,,,56%,,38,,,,,,,,,,,,,59,3
+Foinikas Syrou,10 ZISIS,L,,,,,369,16,15,96,111,,,,,,,,,,,,,59,3
 Foinikas Syrou,11 PARIS M.,S,308,59,46,40,2,,,,,29,2,1,15,24,2,,16,69,28,,17,834,16
 Foinikas Syrou,12 PAPADOPOULOS,M,139,7,18,9,,,,,,76,10,4,43,11,2,,5,99,33,,24,8,
 Foinikas Syrou,13 REINALDO D.,H,234,34,34,15,528,29,30,112,152,260,18,25,123,212,10,20,103,103,38,,23,19,4

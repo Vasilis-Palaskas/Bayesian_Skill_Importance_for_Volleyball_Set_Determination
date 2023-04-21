@@ -58,8 +58,7 @@ data_zdts_only_skills<-list(c_thres=2,c_std=5,
                             away_sets=data_by_sets$away_sets)
 
 #---Set appropriate working directory
-setwd("C:/Users/vasileios palaskas/Desktop/Github folder/Bayesian_Variable_Selection_Volleyball/ZDTS_Skills_Revised/Sections 4.4-4.5")## Run ZDTS_only_Skills_after_BVS.stan
-
+setwd("~/GitHub/Bayesian_Skill_Importance_for_Volleyball_Set_Determination/Sections_5_3-6_3/Section_5_3/ZDTS/With_only_skill_actions")
 ZDTS_only_Skills_after_BVS<-stan("ZDTS_Skills_after_BVS.stan",
                                  data=data_zdts_only_skills,chains=2,
                                  init_r=0.5,cores=2,
