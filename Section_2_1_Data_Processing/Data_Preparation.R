@@ -4,7 +4,7 @@ library(dplyr)
 #Read and further processing of the data
 
 # setwd("C:/Users/vasileios palaskas/Desktop/Github folder/Bayesian_Variable_Selection_Volleyball/ZDTS_Skills_Revised")
-volley<-read.csv("C:\\Users\\vasileios palaskas\\Documents\\GitHub\\Bayesian_Skill_Importance_for_Volleyball_Set_Determination\\Section_2_1_Data_Processing\\Data\\Final_Regular_Season_data.csv",
+volley<-read.csv("C:\\Users\\Vasilis\\Documents\\GitHub\\Bayesian_Skill_Importance_for_Volleyball_Set_Determination\\Section_2_1_Data_Processing\\Data\\Final_Regular_Season_data.csv",
                  header=T)#Load Data\Final_Regular_Season_data.csv
 head(volley,30)
 colnames(volley)[3]<-"home_team"
